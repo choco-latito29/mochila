@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mochila Cup - El Torneo Definitivo</title>
+    <link rel="icon" type="image/png" href="/Image/favicon.png" />
+    <link rel="stylesheet" href="/Css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="home">
+    <header class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <img
+          src="/Image/logo.png"
+          alt="Logo Mochila Cup"
+          class="tournament-logo"
+        />
+        <h1>MOCHILA CUP</h1>
+        <p class="subtitle"></p>
+        <div id="countdown" class="countdown-timer">
+          <div class="time-block">
+            <span id="days">00</span><small>Días</small>
+          </div>
+          <div class="time-block">
+            <span id="hours">00</span><small>Horas</small>
+          </div>
+          <div class="time-block">
+            <span id="minutes">00</span><small>Minutos</small>
+          </div>
+          <div class="time-block">
+            <span id="seconds">00</span><small>Segundos</small>
+          </div>
+        </div>
+        <div class="tournament-info">
+          <span
+            ><i class="fas fa-calendar-alt"></i> Fecha: 04 de Agosto, 2025</span
+          >
+          <span><i class="fas fa-map-marker-alt"></i> Ubicación: Online</span>
+        </div>
+        <a href="/Pages/live.html" class="cta-button">Ver Partida en Vivo</a>
+      </div>
+    </header>
+
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="/Pages/index.html" class="nav-logo">
+          <img src="/Image/logo.png" alt="Logo Pequeño" />
+          <span>MOCHILA CUP</span>
+        </a>
+
+        <div class="nav-menu" id="nav-menu">
+          <a href="/Pages/index.html" class="nav-link active">Inicio</a>
+          <a href="/Pages/announcement.html" class="nav-link">Anuncios</a>
+          <a href="/Pages/live.html" class="nav-link live-link">En Vivo</a>
+          <a href="/Pages/playoffs.html" class="nav-link">Playoffs</a>
+          <a href="/Pages/table.html" class="nav-link">Tabla</a>
+          <a href="/Pages/schedule.html" class="nav-link">Horarios</a>
+          <a href="/Pages/staff.html" class="nav-link">Staff</a>
+          <a href="/Pages/faq.html" class="nav-link">FAQ</a>
+        </div>
+
+        <div class="nav-actions">
+          <a
+            href="/Admin/admin.html"
+            id="admin-panel-button"
+            class="nav-action-btn btn-panel hidden"
+          >
+            <i class="fas fa-user-shield"></i>
+            <span>Panel</span>
+          </a>
+
+          <a
+            href="/Admin/login.html"
+            id="login-button"
+            class="nav-action-btn btn-login"
+          >
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Login</span>
+          </a>
+
+          <button id="logout-button" class="nav-action-btn btn-logout hidden">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </button>
+
+          <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section id="about" class="container section">
+        <h2 class="section-title">La Batalla Está por Comenzar</h2>
+        <p class="section-subtitle">
+          La Mochila Cup: el escenario donde nacen las leyendas y se forjan
+          campeones. Equipos de toda la comunidad se enfrentan en una
+          competencia que exalta la gloria, el honor y la excelencia en el
+          juego. Prepárate para presenciar jugadas destacadas, estrategias de
+          alto nivel y toda la emoción que ofrece Dota 2 en su máxima expresión
+          dentro del ámbito competitivo amateur.
+        </p>
+      </section>
+
+      <section id="featured-teams" class="container section">
+        <h2 class="section-title">Equipos Participantes</h2>
+        <div class="card-grid" id="featured-teams-grid"></div>
+      </section>
+
+      <section id="casters" class="container section">
+        <h2 class="section-title">Conoce a los Casters</h2>
+        <div class="card-grid" id="casters-grid"></div>
+      </section>
+    </main>
+
+    <div id="team-modal" class="modal-overlay">
+      <div class="modal-content">
+        <span class="close-modal-button" id="close-modal-btn">&times;</span>
+        <div id="modal-team-details"></div>
+      </div>
+    </div>
+
+    <div id="caster-modal" class="my-caster-overlay">
+      <div class="my-caster-content">
+        <button id="close-caster-modal-btn" class="my-caster-close-btn">
+          &times;
+        </button>
+        <div class="caster-modal-header">
+          <img
+            id="modalCasterPhoto"
+            src=""
+            alt="Foto de Caster"
+            class="modal-caster-photo"
+          />
+          <h2 id="modalCasterName"></h2>
+        </div>
+        <div class="caster-modal-body">
+          <h3>Descripción:</h3>
+          <p id="modalCasterDescription"></p>
+
+          <h3 class="social-section-title">Redes Sociales:</h3>
+          <div id="modalCasterSocials" class="modal-caster-socials"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-bottom">
+        <div class="footer-legal-links">
+          <a href="/Pages/faq.html">Preguntas Frecuentes</a>
+        </div>
+        <p>
+          © <span id="year"></span> Mochila Cup. Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/Js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mochila Cup - Horarios de Partidas</title>
+    <link rel="icon" type="image/png" href="/Image/favicon.png" />
+    <link rel="stylesheet" href="/Css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="hero small-hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Horarios de Partidas</h1>
+        <p class="subtitle">
+          No te pierdas ningún encuentro de la Mochila Cup.
+        </p>
+      </div>
+    </header>
+
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="/Pages/index.html" class="nav-logo">
+          <img src="/Image/logo.png" alt="Logo Pequeño" />
+          <span>MOCHILA CUP</span>
+        </a>
+
+        <div class="nav-menu" id="nav-menu">
+          <a href="/Pages/index.html" class="nav-link">Inicio</a>
+          <a href="/Pages/announcement.html" class="nav-link">Anuncios</a>
+          <a href="/Pages/live.html" class="nav-link live-link">En Vivo</a>
+          <a href="/Pages/playoffs.html" class="nav-link">Playoffs</a>
+          <a href="/Pages/table.html" class="nav-link">Tabla</a>
+          <a href="/Pages/schedule.html" class="nav-link active">Horarios</a>
+          <a href="/Pages/staff.html" class="nav-link">Staff</a>
+          <a href="/Pages/faq.html" class="nav-link">FAQ</a>
+        </div>
+
+        <div class="nav-actions">
+          <a
+            href="/Admin/admin.html"
+            id="admin-panel-button"
+            class="nav-action-btn btn-panel hidden"
+          >
+            <i class="fas fa-user-shield"></i>
+            <span>Panel</span>
+          </a>
+
+          <a
+            href="/Admin/login.html"
+            id="login-button"
+            class="nav-action-btn btn-login"
+          >
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Login</span>
+          </a>
+
+          <button id="logout-button" class="nav-action-btn btn-logout hidden">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </button>
+
+          <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section id="schedule-section" class="container section">
+        <h2 class="section-title">
+          <i class="fas fa-calendar-alt"></i> Próximas Partidas
+        </h2>
+        <p class="section-description">
+          Consulta los horarios de los próximos encuentros de la Mochila Cup.
+          Los horarios están en GMT-5 (Hora de Perú).
+        </p>
+
+        <div class="schedule-filter-container">
+          <div class="schedule-filter-group">
+            <label for="day-select">Filtrar por Día:</label>
+            <select id="day-select">
+              <option value="all">Todos los Días</option>
+            </select>
+          </div>
+          <div class="schedule-filter-group">
+            <label for="stage-select">Filtrar por Fase:</label>
+            <select id="stage-select">
+              <option value="all">Todas las Fases</option>
+              <option value="group-stage">Fase de Grupos</option>
+              <option value="playoffs">Playoffs</option>
+              <option value="final">Gran Final</option>
+            </select>
+          </div>
+          <div class="schedule-filter-group">
+            <label for="group-select">Filtrar por Grupo:</label>
+            <select id="group-select">
+              <option value="all">Todos los Grupos</option>
+              <option value="group-a">Grupo A</option>
+              <option value="group-b">Grupo B</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="schedule-list">
+          <div class="no-matches-message">
+            <i class="fas fa-calendar-times"></i>
+            <h4>Aún no hay partidas programadas.</h4>
+            <p>Consulta más tarde el horario de la Mochila Cup.</p>
+          </div>
+        </div>
+
+        <div class="section-cta" style="text-align: center; margin-top: 4rem">
+          <p class="section-description">
+            ¿Quieres ver la clasificación actual o el bracket de playoffs?
+          </p>
+          <a href="/Pages/table.html" class="cta-button"
+            >Ver Tabla de Posiciones</a
+          >
+          <a href="/Pages/playoffs.html" class="cta-button secondary"
+            >Ver Bracket de Playoffs</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-bottom">
+        <div class="footer-legal-links">
+          <a href="/Pages/faq.html">Preguntas Frecuentes</a>
+        </div>
+        <p>
+          © <span id="year"></span> Mochila Cup. Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/Js/script.js"></script>
+    <script src="/Js/schedule.js"></script>
+  </body>
+</html>

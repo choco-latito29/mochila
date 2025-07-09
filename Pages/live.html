@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mochila Cup - En Vivo</title>
+    <link rel="icon" type="image/png" href="/Image/favicon.png" />
+    <link rel="stylesheet" href="/Css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <img src="/Image/logo.png" alt="Logo Pequeño" />
+          <span>MOCHILA CUP</span>
+        </a>
+
+        <div class="nav-menu" id="nav-menu">
+          <a href="/Pages/index.html" class="nav-link">Inicio</a>
+          <a href="/Pages/announcement.html" class="nav-link">Anuncios</a>
+          <a href="/Pages/live.html" class="nav-link live-link active"
+            >En Vivo</a
+          >
+          <a href="/Pages/playoffs.html" class="nav-link">Playoffs</a>
+          <a href="/Pages/table.html" class="nav-link">Tabla</a>
+          <a href="/Pages/schedule.html" class="nav-link">Horarios</a>
+          <a href="/Pages/staff.html" class="nav-link">Staff</a>
+          <a href="/Pages/faq.html" class="nav-link">FAQ</a>
+        </div>
+
+        <div class="nav-actions">
+          <a
+            href="/Admin/admin.html"
+            id="admin-panel-button"
+            class="nav-action-btn btn-panel hidden"
+          >
+            <i class="fas fa-user-shield"></i>
+            <span>Panel</span>
+          </a>
+
+          <a
+            href="/Admin/login.html"
+            id="login-button"
+            class="nav-action-btn btn-login"
+          >
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Login</span>
+          </a>
+
+          <button id="logout-button" class="nav-action-btn btn-logout hidden">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </button>
+
+          <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="container">
+        <h2><i class="fas fa-broadcast-tower"></i> Transmisiones Oficiales</h2>
+        <p
+          class="section-description"
+          style="margin-top: -1.5rem; margin-bottom: 2rem"
+        >
+          Sigue toda la acción del torneo a través de los canales de nuestros
+          casters oficiales.
+        </p>
+
+        <div class="streams-grid">
+          <div class="stream-card">
+            <h3 class="caster-name"><i class="fas fa-video"></i> JMordekay</h3>
+            <div class="video-embed-full">
+              <iframe
+                src="https://player.kick.com/jmordekay"
+                height="100%"
+                width="100%"
+                frameborder="0"
+                scrolling="no"
+                allowfullscreen="true"
+              >
+              </iframe>
+            </div>
+            <div class="stream-card-footer">
+              <a
+                href="https://kick.com/jmordekay"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="cta-button stream-channel-link"
+              >
+                <i class=""></i> Ver Canal
+              </a>
+            </div>
+          </div>
+
+          <div class="stream-card">
+            <h3 class="caster-name"><i class="fas fa-video"></i> Skinny_A</h3>
+            <div class="video-embed-full">
+              <iframe
+                src="https://player.kick.com/skinny-a"
+                height="100%"
+                width="100%"
+                frameborder="0"
+                scrolling="no"
+                allowfullscreen="true"
+              >
+              </iframe>
+            </div>
+            <div class="stream-card-footer">
+              <a
+                href="https://kick.com/skinny-a"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="cta-button stream-channel-link"
+              >
+                <i class=""></i> Ver Canal
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-bottom">
+        <div class="footer-legal-links">
+          <a href="/Imagefaq.html">Preguntas Frecuentes</a>
+        </div>
+        <p>
+          © <span id="year"></span> Mochila Cup. Todos los derechos reservados.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>

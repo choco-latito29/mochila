@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mochila Cup - Panel de Administración</title>
+    <link rel="icon" type="image/png" href="/Image/favicon.png" />
+    <link rel="stylesheet" href="/Css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="hero small-hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Panel de Administración</h1>
+        <p class="subtitle">Gestiona tu torneo en tiempo real.</p>
+      </div>
+    </header>
+
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="/Pages/index.html" class="nav-logo">
+          <img src="/Image/logo.png" alt="Logo Pequeño" />
+          <span>MOCHILA CUP</span>
+        </a>
+        <div class="nav-actions">
+          <a
+            href="/Pages/index.html"
+            class="nav-link admin-button"
+            style="background-color: var(--primary-blue)"
+          >
+            <i class="fas fa-home"></i> Home
+          </a>
+          <button
+            id="logout-button"
+            class="nav-link admin-button"
+            style="background-color: var(--primary-red-dark)"
+          >
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="admin-container container">
+        <section id="card-anuncios" class="admin-card">
+          <h2 class="admin-card-title">
+            <i class="fas fa-bullhorn"></i> Gestión de Anuncios
+          </h2>
+          <form id="news-form" class="admin-form" enctype="multipart/form-data">
+            <input type="hidden" id="news-id" name="newsId" />
+            <div class="form-group">
+              <label for="news-title">Título del Anuncio:</label>
+              <input type="text" id="news-title" name="title" required />
+            </div>
+            <div class="form-group">
+              <label for="news-content">Contenido:</label>
+              <textarea
+                id="news-content"
+                name="content"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="news-image">Imagen Destacada (Opcional):</label>
+              <input
+                type="file"
+                id="news-image"
+                name="imageUrl"
+                accept="image/*"
+              />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="cta-button submit-button">
+                <i class="fas fa-save"></i>
+                <span id="news-form-button-text">Guardar Anuncio</span>
+              </button>
+              <button
+                type="button"
+                id="news-form-cancel"
+                class="cta-button offline-button hidden"
+              >
+                <i class="fas fa-times"></i> Cancelar
+              </button>
+            </div>
+          </form>
+          <hr class="admin-divider" />
+          <h3><i class="fas fa-list-alt"></i> Anuncios Publicados</h3>
+          <div id="news-list-container" class="admin-list-container"></div>
+        </section>
+
+        <section id="card-partidas" class="admin-card">
+          <h2 class="admin-card-title">
+            <i class="fas fa-gamepad"></i> Gestión de Partidas
+          </h2>
+          <div class="sub-form">
+            <h3><i class="fas fa-plus"></i> Crear Nueva Partida Manual</h3>
+            <form id="create-match-form" class="admin-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="manual-team1-select">Equipo 1:</label>
+                  <select
+                    id="manual-team1-select"
+                    name="team1"
+                    required
+                  ></select>
+                </div>
+                <div class="form-group">
+                  <label for="manual-team2-select">Equipo 2:</label>
+                  <select
+                    id="manual-team2-select"
+                    name="team2"
+                    required
+                  ></select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="manual-match-date"
+                  >Fecha y Hora de la Partida:</label
+                >
+                <input
+                  type="datetime-local"
+                  id="manual-match-date"
+                  name="matchDate"
+                  required
+                />
+              </div>
+              <div class="form-group form-group-checkbox">
+                <input
+                  type="checkbox"
+                  id="is-playoff-checkbox"
+                  name="isPlayoff"
+                  value="true"
+                />
+                <label for="is-playoff-checkbox"
+                  >¿Es partida de Playoffs?</label
+                >
+              </div>
+              <div
+                class="form-group"
+                id="playoff-round-group"
+                style="display: none"
+              >
+                <label for="playoff-round-input"
+                  >Selecciona la Ronda del Playoff:</label
+                >
+                <select id="playoff-round-input" name="playoffRound">
+                  <option value="" disabled selected>
+                    -- Elige una ronda --
+                  </option>
+                  <optgroup label="Upper Bracket">
+                    <option value="ub-qf-1">
+                      Cuartos de Final - Partida 1
+                    </option>
+                    <option value="ub-qf-2">
+                      Cuartos de Final - Partida 2
+                    </option>
+                    <option value="ub-qf-3">
+                      Cuartos de Final - Partida 3
+                    </option>
+                    <option value="ub-qf-4">
+                      Cuartos de Final - Partida 4
+                    </option>
+                    <option value="ub-sf-1">Semifinal - Partida 1</option>
+                    <option value="ub-sf-2">Semifinal - Partida 2</option>
+                    <option value="ub-final">Final del Upper Bracket</option>
+                  </optgroup>
+                  <optgroup label="Lower Bracket">
+                    <option value="lb-r1-1">Ronda 1 - Partida 1</option>
+                    <option value="lb-r1-2">Ronda 1 - Partida 2</option>
+                    <option value="lb-qf-1">
+                      Cuartos de Final - Partida 1
+                    </option>
+                    <option value="lb-qf-2">
+                      Cuartos de Final - Partida 2
+                    </option>
+                    <option value="lb-sf-1">Semifinal</option>
+                    <option value="lb-final">Final del Lower Bracket</option>
+                  </optgroup>
+                  <optgroup label="Finales">
+                    <option value="grand-final">Gran Final</option>
+                  </optgroup>
+                </select>
+              </div>
+              <button
+                type="submit"
+                class="cta-button submit-button small-button"
+              >
+                <i class="fas fa-calendar-plus"></i> Programar Partida
+              </button>
+            </form>
+          </div>
+          <hr class="admin-divider" />
+          <h3><i class="fas fa-trophy"></i> Registrar Resultado</h3>
+          <form id="update-score-form" class="admin-form">
+            <div class="form-group">
+              <label for="match-select">Seleccionar Partida Pendiente:</label>
+              <select id="match-select" required></select>
+            </div>
+            <div id="match-details" class="hidden">
+              <div class="form-row">
+                <div class="form-group">
+                  <label id="match-team1-label">Equipo 1</label>
+                  <input
+                    type="number"
+                    id="team1-score"
+                    name="scoreTeam1"
+                    min="0"
+                    value="0"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label id="match-team2-label">Equipo 2</label>
+                  <input
+                    type="number"
+                    id="team2-score"
+                    name="scoreTeam2"
+                    min="0"
+                    value="0"
+                    required
+                  />
+                </div>
+              </div>
+              <button type="submit" class="cta-button submit-button">
+                <i class="fas fa-check-circle"></i> Finalizar Partida y Guardar
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section id="card-crear-equipo" class="admin-card">
+          <h2 class="admin-card-title">
+            <i class="fas fa-plus-circle"></i> Crear Nuevo Equipo
+          </h2>
+          <form
+            id="create-team-form"
+            class="admin-form"
+            enctype="multipart/form-data"
+          >
+            <div class="form-row">
+              <div class="form-group">
+                <label for="create-team-name">Nombre del Equipo:</label>
+                <input type="text" id="create-team-name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="create-team-group">Grupo:</label>
+                <select id="create-team-group" name="group" required>
+                  <option value="A">Grupo A</option>
+                  <option value="B">Grupo B</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="create-team-motto">Lema del Equipo:</label>
+              <input type="text" id="create-team-motto" name="motto" />
+            </div>
+            <div class="form-group">
+              <label for="create-team-logo">Logo del Equipo:</label>
+              <input
+                type="file"
+                id="create-team-logo"
+                name="logo"
+                accept="image/*"
+                required
+              />
+            </div>
+            <button type="submit" class="cta-button submit-button">
+              <i class="fas fa-save"></i> Crear Equipo
+            </button>
+          </form>
+        </section>
+
+        <section id="card-gestionar-equipos" class="admin-card">
+          <h2 class="admin-card-title">
+            <i class="fas fa-users-cog"></i> Gestionar Equipos Existentes
+          </h2>
+          <form
+            id="edit-team-form"
+            class="admin-form"
+            enctype="multipart/form-data"
+          >
+            <div class="form-group">
+              <label for="master-team-select"
+                >Seleccionar Equipo a Editar:</label
+              >
+              <select id="master-team-select" name="teamId" required></select>
+            </div>
+            <div id="edit-fields-container" class="hidden">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="edit-team-name">Nombre del Equipo:</label>
+                  <input type="text" id="edit-team-name" name="name" required />
+                </div>
+                <div class="form-group">
+                  <label for="edit-team-group">Grupo:</label>
+                  <select id="edit-team-group" name="group" required>
+                    <option value="A">Grupo A</option>
+                    <option value="B">Grupo B</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="edit-team-motto">Lema del Equipo:</label>
+                <input type="text" id="edit-team-motto" name="motto" />
+              </div>
+              <div class="form-group">
+                <label for="edit-team-logo">Cambiar Logo (Opcional):</label>
+                <input
+                  type="file"
+                  id="edit-team-logo"
+                  name="logo"
+                  accept="image/*"
+                />
+                <small
+                  >Solo selecciona un archivo si quieres reemplazar el logo
+                  actual.</small
+                >
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="cta-button submit-button">
+                  <i class="fas fa-save"></i> Guardar Cambios
+                </button>
+                <button
+                  type="button"
+                  id="delete-team-button"
+                  class="cta-button delete-button"
+                >
+                  <i class="fas fa-trash-alt"></i> Eliminar Equipo
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <hr class="admin-divider" />
+
+          <h3><i class="fas fa-users"></i> Miembros del Equipo</h3>
+          <div id="members-list-container"></div>
+
+          <div class="sub-form">
+            <h4><i class="fas fa-user-plus"></i> Añadir Nuevo Miembro</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="add-member-name">Nombre:</label>
+                <input type="text" id="add-member-name" />
+              </div>
+              <div class="form-group">
+                <label for="add-member-role">Rol:</label>
+                <select id="add-member-role">
+                  <option value="player">Jugador</option>
+                  <option value="coach">Coach</option>
+                  <option value="stand-in">Suplente</option>
+                </select>
+              </div>
+            </div>
+            <button
+              type="button"
+              id="add-member-button"
+              class="cta-button submit-button small-button"
+            >
+              Añadir Miembro
+            </button>
+          </div>
+        </section>
+
+        <section id="card-usuarios" class="admin-card">
+          <h2 class="admin-card-title">
+            <i class="fas fa-user-shield"></i> Gestión de Usuarios
+          </h2>
+          <div class="sub-form">
+            <h3><i class="fas fa-user-plus"></i> Crear Nuevo Usuario</h3>
+            <form id="create-user-form" class="admin-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="user-email">Email:</label>
+                  <input type="email" id="user-email" name="email" required />
+                </div>
+                <div class="form-group">
+                  <label for="user-password">Contraseña:</label>
+                  <input
+                    type="password"
+                    id="user-password"
+                    name="password"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="user-role">Rol:</label>
+                  <select id="user-role" name="role" required>
+                    <option value="admin">Admin</option>
+                    <option value="manager">Manager</option>
+                    <option value="moderator">Moderator</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="cta-button submit-button">
+                Crear Usuario
+              </button>
+            </form>
+          </div>
+          <hr class="admin-divider" />
+          <h3><i class="fas fa-users"></i> Usuarios Existentes</h3>
+          <div id="users-list-container" class="admin-list-container"></div>
+        </section>
+
+        <section id="card-sanciones" class="admin-card">
+          <h2 class="admin-card-title">
+            <i class="fas fa-gavel"></i> Sanciones y Penalizaciones
+          </h2>
+          <form id="sanction-form" class="admin-form">
+            <div class="form-group">
+              <label for="sanction-team-select">Equipo a Sancionar:</label>
+              <select id="sanction-team-select" name="team" required></select>
+            </div>
+            <div class="form-group">
+              <label for="sanction-reason">Motivo:</label>
+              <textarea
+                id="sanction-reason"
+                name="reason"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="sanction-penalty">Penalización:</label>
+              <input
+                type="text"
+                id="sanction-penalty"
+                name="penalty"
+                placeholder="Ej: Pérdida de 1 punto"
+                required
+              />
+            </div>
+            <button type="submit" class="cta-button submit-button">
+              Aplicar Sanción
+            </button>
+          </form>
+          <hr class="admin-divider" />
+          <h3><i class="fas fa-history"></i> Historial de Sanciones</h3>
+          <div id="sanctions-list-container" class="admin-list-container"></div>
+        </section>
+
+        <section id="card-casters" class="admin-card">
+          <h2 class="admin-card-title">
+            <i class="fas fa-microphone-alt"></i> Gestión de Casters
+          </h2>
+
+          <form
+            id="caster-form"
+            class="admin-form"
+            enctype="multipart/form-data"
+          >
+            <div class="form-group">
+              <label for="caster-name">Nombre del Caster:</label>
+              <input type="text" id="caster-name" name="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="caster-description">Descripción:</label>
+              <textarea
+                id="caster-description"
+                name="description"
+                rows="3"
+                placeholder="Una breve biografía o descripción del caster..."
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="caster-photo">Foto del Caster:</label>
+              <input
+                type="file"
+                id="caster-photo"
+                name="photo"
+                accept="image/*"
+              />
+              <small
+                >La foto es obligatoria al crear un caster nuevo. Al editar,
+                solo selecciona una si quieres reemplazar la actual.</small
+              >
+            </div>
+
+            <div class="sub-form">
+              <h4><i class="fas fa-share-alt"></i> Redes Sociales</h4>
+              <div class="social-input-group">
+                <div class="form-group social-platform-field">
+                  <label for="social-platform-select">Plataforma:</label>
+                  <select id="social-platform-select" class="small-input">
+                    <option value="" disabled selected>
+                      Selecciona una plataforma
+                    </option>
+                    <option value="kick">Kick</option>
+                    <option value="twitter">X (Twitter)</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="tiktok">TikTok</option>
+                    <option value="youtube">YouTube</option>
+                  </select>
+                </div>
+                <div class="form-group social-url-field">
+                  <label for="social-url-input">URL:</label>
+                  <input
+                    type="url"
+                    id="social-url-input"
+                    placeholder="Ej: https://twitch.tv/usuario"
+                    class="small-input"
+                  />
+                </div>
+                <button type="button" id="add-social-button" class="cta-button">
+                  <i class="fas fa-plus"></i> Añadir Red
+                </button>
+              </div>
+              <div class="form-group hidden" id="other-platform-input-group">
+                <label for="other-platform-name"
+                  >Nombre de la plataforma (Otro):</label
+                >
+                <input
+                  type="text"
+                  id="other-platform-name"
+                  class="small-input"
+                  placeholder="Ej: Threads, Telegram"
+                />
+              </div>
+
+              <div id="socials-list-container" class="list-container">
+                <p>No se han añadido redes sociales.</p>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="cta-button submit-button">
+                <span id="caster-form-button-text">Guardar Caster</span>
+              </button>
+              <button
+                type="button"
+                id="caster-form-cancel"
+                class="cta-button offline-button hidden"
+              >
+                Cancelar
+              </button>
+            </div>
+          </form>
+
+          <hr class="admin-divider" />
+
+          <h3><i class="fas fa-list"></i> Casters Actuales</h3>
+          <div id="casters-list-container" class="admin-list-container"></div>
+        </section>
+
+        <section id="card-logs" class="admin-card">
+          <h2 class="admin-card-title">
+            <i class="fas fa-clipboard-list"></i> Logs de Actividad
+          </h2>
+          <div id="logs-list-container" class="admin-list-container"></div>
+        </section>
+      </div>
+    </main>
+
+    <div id="notificationModal" class="modal-overlay">
+      <div class="modal-content">
+        <i id="modalIcon" class="fas modal-icon"></i>
+        <p id="modalMessage" class="modal-message"></p>
+      </div>
+    </div>
+
+    <div id="confirmationModal" class="modal-overlay">
+      <div class="modal-content confirmation">
+        <i class="fas fa-exclamation-triangle modal-icon"></i>
+        <p id="confirmationMessage" class="modal-message"></p>
+        <div class="modal-actions">
+          <button id="confirmBtn" class="cta-button submit-button">
+            Confirmar
+          </button>
+          <button id="cancelBtn" class="cta-button offline-button">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        © <span id="year"></span> Mochila Cup. Todos los derechos reservados.
+      </p>
+    </footer>
+
+    <script src="/Js/script.js"></script>
+    <script src="/Admin/admin.js"></script>
+  </body>
+</html>
