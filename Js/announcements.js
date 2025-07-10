@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const API_URL = "http://216.173.77.192:25959/api";
-  const SERVER_BASE_URL = "http://216.173.77.192:25959";
+  const API_URL = "https://216.173.77.192:25959/api";
+  const SERVER_BASE_URL = "https://216.173.77.192:25959";
   const container = document.getElementById("announcements-list");
 
   // Función para calcular "hace X tiempo"

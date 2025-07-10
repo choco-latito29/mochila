@@ -45,7 +45,7 @@ main {
       rgba(15, 5, 30, 0.75),
       rgba(5, 5, 15, 0.85)
     ),
-    url("/Image/fondo.png");
+    url("../Image/fondo.png");
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
@@ -627,7 +627,7 @@ h2 i {
       rgba(15, 5, 30, 0.75),
       rgba(5, 5, 15, 0.85)
     ),
-    url("/Image/fondo.png");
+    url("../Image/fondo.png");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

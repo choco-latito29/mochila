@@ -1190,7 +1190,7 @@
       const token = localStorage.getItem("authToken");
       if (!token) {
         document.body.innerHTML =
-          '<div style="text-align: center; padding: 50px; color: white;"><h1>Acceso Denegado</h1><p>No tienes permiso para ver esta página. Por favor, <a href="/Admin/login.html" style="color: var(--accent-gold);">inicia sesión</a>.</p></div>';
+          '<div style="text-align: center; padding: 50px; color: white;"><h1>Acceso Denegado</h1><p>No tienes permiso para ver esta página. Por favor, <a href="../Admin/login.html" style="color: var(--accent-gold);">inicia sesión</a>.</p></div>';
         return;
       }
       state.currentUser = utils.decodeToken(token);

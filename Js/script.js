@@ -3,12 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- CONFIGURACIÓN GLOBAL ---
   // ===================================================================
   const API_BASE_URL = "http://216.173.77.192:25959/api";
-  const SERVER_BASE_URL = "http://216.173.77.192:25959";
+  const SERVER_BASE_URL = "https://216.173.77.192:25959";
   console.log("Script principal cargado.");
 
   // Rutas por defecto para imágenes
-  const DEFAULT_TEAM_LOGO = "/Image/default.png";
-  const DEFAULT_CASTER_PHOTO = "/Image/casters.png"; // Ajustado para tu ruta relativa
+  const DEFAULT_TEAM_LOGO = "../Image/default.png";
+  const DEFAULT_CASTER_PHOTO = "../Image/casters.png"; // Ajustado para tu ruta relativa
 
   // ===================================================================
   // --- REFERENCIAS DEL DOM (Unificado y ajustado a tu HTML) ---
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     logoutUser: () => {
       localStorage.removeItem("authToken");
-      window.location.href = "/Pages/index.html"; // Redirige a la página principal
+      window.location.href = "../Pages/index.html"; // Redirige a la página principal
       App.updateAuthUI(); // Actualiza la UI de autenticación
       // Si tuvieras un modal de notificación en index.html, podrías usarlo aquí:
       // App.showMessage("Has cerrado sesión.", "success");

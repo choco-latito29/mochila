@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // --- CONFIGURACIÓN ---
-  const API_URL = "http://216.173.77.192:25959/api";
+  const API_URL = "https://216.173.77.192:25959/api";
 
   // --- ELEMENTOS DEL DOM ---
   const loginForm = document.getElementById("login-form");
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("authToken", data.token);
 
         // 2. Redirige al usuario al panel de administración inmediatamente.
-        window.location.href = "/Admin/admin.html";
+        window.location.href = "../Admin/admin.html";
       } catch (error) {
         // Si ocurre cualquier error, muéstralo en pantalla.
         if (messageBox) {

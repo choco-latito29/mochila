@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const API_URL = "http://216.173.77.192:25959/api";
-  const SERVER_BASE_URL = "http://216.173.77.192:25959";
+  const API_URL = "https://216.173.77.192:25959/api";
+  const SERVER_BASE_URL = "https://216.173.77.192:25959";
 
   const scheduleListContainer = document.querySelector(".schedule-list");
   const daySelect = document.getElementById("day-select");
@@ -236,11 +236,11 @@ document.addEventListener("DOMContentLoaded", () => {
           const team1Logo =
             match.team1 && match.team1.logo
               ? `${SERVER_BASE_URL}${match.team1.logo}`
-              : "/Image/default.png";
+              : "../Image/default.png";
           const team2Logo =
             match.team2 && match.team2.logo
               ? `${SERVER_BASE_URL}${match.team2.logo}`
-              : "/Image/default.png";
+              : "../Image/default.png";
 
           let scoreDisplay = "";
           let matchStatusClass = "";
@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
             scoreDisplay = `<span class="match-score">${match.result.scoreTeam1} - ${match.result.scoreTeam2}</span>`;
             matchStatusClass = "match-finished";
           } else {
-            scoreDisplay = `<a href="/Pages/live.html" class="match-stream-link"><i class="fa-brands fa-kickstarter"></i> En Vivo</a>`;
+            scoreDisplay = `<a href="../Pages/live.html" class="match-stream-link"><i class="fa-brands fa-kickstarter"></i> En Vivo</a>`;
             matchStatusClass = "match-upcoming";
           }
 
